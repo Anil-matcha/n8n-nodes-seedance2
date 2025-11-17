@@ -78,6 +78,7 @@ Don't forget to:
 | [Qualitycs](https://qualitycs.dev/) | Automatically evaluate your website's performance and user experience. Qualitycs conducts regular Lighthouse audits on all your webpages, generating comprehensive reports to help you address specific issues effectively. | Enjoy an automatic 25% discount |
 | [GSCTool.com](https://www.gsctool.com/) | Simplify the management of your search console account with our Chrome extension, which supports Google Search Console, Bing Webmaster Tools, and Yandex. Perform bulk URL removals, bulk indexing URL tasks, and bulk inspections for Google, Bing, and Yandex. | Get 25% OFF with code **BLACKFRIDAY2023** |
 | [Docswrite](https://docswrite.com/) | Seamlessly export your Google Docs content to WordPress with a single click. Achieve clean, SEO-optimized exports that include your images, all without the need for manual copy-pasting. | Enjoy a 25% discount with code **`25BLACK`** |
+| [SEOengine.ai](https://seoengine.ai) | SEOengine.ai deploys 5 specialized AI agents that analyze competitors, mine real user questions from Reddit/Quora, and generate 4,000-6,000 word AEO-optimized articles in your authentic brand voice. From research to publication-ready content with E-E-A-T compliance, internal linking, and multimedia integration—all automated in one seamless workflow. | 35% OFF with code **BLACKFRIDAY** (Nov 17 - Dec 7) |
 
 [⬆️ Go to Top](#table-of-contents)
 
