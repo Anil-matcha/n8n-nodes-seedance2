@@ -42,7 +42,7 @@ npm install n8n-nodes-seedance2
 
 ## How to Configure
 
-1. Get your **MuAPI API Key** at [muapi.ai](https://muapi.ai).
+1. Get your **MuAPI API Key** at [muapi.ai/access-keys](https://muapi.ai/access-keys).
 2. Add the **Seedance 2.0** node to your n8n canvas.
 3. Create a new credential and paste your API Key.
 4. Select your generation category and model.
