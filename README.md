@@ -4,6 +4,10 @@ Integrate **ByteDance Seedance 2.0** into your **n8n** workflows for high-qualit
 
 ![Seedance 2.0 n8n Node](https://muapi.ai/muapi-logo.svg)
 
+## About
+
+This node is a specialized version of the [MuAPI n8n community node](https://github.com/SamurAIGPT/n8n-nodes-muapi), optimized specifically for **Seedance 2.0**. For access to all generative AI models (Flux, Wan, Suno, etc.), please check out the main [n8n-nodes-muapi](https://github.com/SamurAIGPT/n8n-nodes-muapi) repository.
+
 ## Why use n8n-nodes-seedance2?
 
 Seedance 2.0 is a cutting-edge multimodal video generation model by ByteDance. This node makes it accessible to n8n users, enabling:
