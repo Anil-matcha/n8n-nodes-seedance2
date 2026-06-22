@@ -3,6 +3,7 @@
 > The ultimate resource for Seedance 2.5 — ByteDance's next-gen AI video generation model. Covers API integration, prompt engineering, camera controls, multimodal workflows, and curated examples.
 
 [![Seedance 2.5](https://img.shields.io/badge/Seedance-2.5-blue)](https://seed.bytedance.com)
+[![Powered by MuAPI](https://img.shields.io/badge/Powered%20by-MuAPI-6366f1?style=flat-square&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0id2hpdGUiIGQ9Ik0xMiAyQzYuNDggMiAyIDYuNDggMiAxMnM0LjQ4IDEwIDEwIDEwIDEwLTQuNDggMTAtMTBTMTcuNTIgMiAxMiAyem0tMSAxNHYtNGgtMnYtMmg0djZoLTJ6bTAtOFY2aDJ2MmgtMnoiLz48L3N2Zz4=)](https://muapi.ai?utm_source=github&utm_medium=badge&utm_campaign=awesome-seedance-2.5)
 [![Stars](https://img.shields.io/github/stars/Anil-matcha/awesome-seedance-2.5-api-prompts?style=social)](https://github.com/Anil-matcha/awesome-seedance-2.5-api-prompts)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
@@ -13,11 +14,13 @@
 - [What is Seedance 2.5?](#what-is-seedance-25)
 - [Seedance 2.5 vs 2.0 — What's New](#seedance-25-vs-20--whats-new)
 - [Capabilities](#capabilities)
-- [API Integration](#api-integration)
-  - [fal.ai](#falai)
-  - [Replicate](#replicate)
-  - [Volcano Engine / BytePlus](#volcano-engine--byteplus)
-- [API Parameters](#api-parameters)
+- [API Reference (MuAPI)](#api-reference-muapi)
+  - [Text-to-Video](#1-seedance-25-text-to-video-t2v)
+  - [Image-to-Video](#2-seedance-25-image-to-video-i2v)
+  - [Video Extension](#3-seedance-25-video-extension)
+  - [Polling for Results](#polling-for-results)
+  - [Parameters](#muapi-parameters)
+- [Prompt Engineering Guide](#prompt-engineering-guide)
 - [Prompt Engineering Guide](#prompt-engineering-guide)
   - [The 6-Step Formula](#the-6-step-formula)
   - [Camera Movement Vocabulary](#camera-movement-vocabulary)
@@ -87,113 +90,149 @@ Seedance 2.5 accepts **text, images, video clips, and audio** as input and outpu
 
 ---
 
-## API Integration
+## API Reference (MuAPI)
 
-### fal.ai
+The fastest way to access Seedance 2.5 via API is through **[MuAPI](https://muapi.ai?utm_source=github&utm_medium=readme&utm_campaign=awesome-seedance-2.5)** — a unified media API gateway with reliable uptime, competitive pricing, and no per-provider account setup.
 
-The easiest way to access Seedance 2.5 via API.
+**Get your API key:** [muapi.ai](https://muapi.ai?utm_source=github&utm_medium=readme&utm_campaign=awesome-seedance-2.5)
 
 ```bash
-pip install fal-client
-```
-
-```python
-import fal_client
-
-result = fal_client.subscribe(
-    "fal-ai/seedance-2-5/text-to-video",
-    arguments={
-        "prompt": "A lone astronaut walks across a red Martian desert at golden hour, wide angle, cinematic",
-        "resolution": "720p",
-        "duration": "10",
-        "aspect_ratio": "16:9",
-        "generate_audio": True
-    }
-)
-
-print(result["video"]["url"])
-```
-
-**Image-to-Video (fal.ai):**
-
-```python
-result = fal_client.subscribe(
-    "fal-ai/seedance-2-5/image-to-video",
-    arguments={
-        "prompt": "The camera slowly pushes in as the woman turns to face us, hair blowing in the wind",
-        "image_url": "https://your-image-url.com/photo.jpg",
-        "resolution": "720p",
-        "duration": "8",
-        "aspect_ratio": "16:9",
-        "generate_audio": True
-    }
-)
+x-api-key: YOUR_MUAPI_KEY
+Base URL: https://api.muapi.ai/api/v1
 ```
 
 ---
 
-### Replicate
+### 1. Seedance 2.5 Text-to-Video (T2V)
+
+**Endpoint:** `POST https://api.muapi.ai/api/v1/seedance-2.5-t2v`
 
 ```bash
-pip install replicate
+curl --location --request POST "https://api.muapi.ai/api/v1/seedance-2.5-t2v" \
+  --header "Content-Type: application/json" \
+  --header "x-api-key: YOUR_API_KEY" \
+  --data-raw '{
+      "prompt": "A lone astronaut walks across a red Martian desert at golden hour, wide angle, cinematic",
+      "aspect_ratio": "16:9",
+      "duration": 10,
+      "quality": "high"
+  }'
 ```
 
-```python
-import replicate
-
-output = replicate.run(
-    "bytedance/seedance-2-5:latest",
-    input={
-        "prompt": "Cinematic drone shot over a misty Japanese forest at dawn, golden light filtering through cedar trees",
-        "resolution": "720p",
-        "duration": 10,
-        "aspect_ratio": "16:9",
-        "generate_audio": True
-    }
-)
-```
-
----
-
-### Volcano Engine / BytePlus
-
+**Python:**
 ```python
 import requests
 
-headers = {
-    "Authorization": "Bearer YOUR_API_KEY",
-    "Content-Type": "application/json"
-}
-
-payload = {
-    "model": "seedance-2-5",
-    "prompt": "Your prompt here",
-    "resolution": "720p",
-    "duration": 10,
-    "aspect_ratio": "16:9"
-}
-
 response = requests.post(
-    "https://api.byteplus.com/v1/video/generate",
-    json=payload,
-    headers=headers
+    "https://api.muapi.ai/api/v1/seedance-2.5-t2v",
+    headers={"x-api-key": "YOUR_API_KEY", "Content-Type": "application/json"},
+    json={
+        "prompt": "A lone astronaut walks across a red Martian desert at golden hour, wide angle, cinematic",
+        "aspect_ratio": "16:9",
+        "duration": 10,
+        "quality": "high"
+    }
 )
+request_id = response.json()["request_id"]
 ```
 
 ---
 
-## API Parameters
+### 2. Seedance 2.5 Image-to-Video (I2V)
+
+**Endpoint:** `POST https://api.muapi.ai/api/v1/seedance-2.5-i2v`
+
+Reference input images in your prompt using `@image1`, `@image2`, etc.
+
+```bash
+curl --location --request POST "https://api.muapi.ai/api/v1/seedance-2.5-i2v" \
+  --header "Content-Type: application/json" \
+  --header "x-api-key: YOUR_API_KEY" \
+  --data-raw '{
+      "prompt": "@image1 — the camera slowly pushes in as she turns to face us, hair blowing in the wind",
+      "images_list": ["https://example.com/photo.jpg"],
+      "aspect_ratio": "16:9",
+      "duration": 8,
+      "quality": "high"
+  }'
+```
+
+**Python:**
+```python
+response = requests.post(
+    "https://api.muapi.ai/api/v1/seedance-2.5-i2v",
+    headers={"x-api-key": "YOUR_API_KEY", "Content-Type": "application/json"},
+    json={
+        "prompt": "@image1 — the camera slowly pushes in as she turns to face us, hair blowing in the wind",
+        "images_list": ["https://example.com/photo.jpg"],
+        "aspect_ratio": "16:9",
+        "duration": 8,
+        "quality": "high"
+    }
+)
+request_id = response.json()["request_id"]
+```
+
+---
+
+### 3. Seedance 2.5 Video Extension
+
+**Endpoint:** `POST https://api.muapi.ai/api/v1/seedance-2.5-extend`
+
+Seamlessly extend an existing Seedance 2.5 clip while maintaining style and character consistency.
+
+```bash
+curl --location --request POST "https://api.muapi.ai/api/v1/seedance-2.5-extend" \
+  --header "Content-Type: application/json" \
+  --header "x-api-key: YOUR_API_KEY" \
+  --data-raw '{
+      "request_id": "YOUR_ORIGINAL_REQUEST_ID",
+      "prompt": "She continues walking into the foggy distance",
+      "duration": 6
+  }'
+```
+
+---
+
+### Polling for Results
+
+All MuAPI endpoints return a `request_id`. Poll until `status` is `completed`:
+
+```python
+import time, requests
+
+def wait_for_result(request_id, api_key, poll_interval=5, timeout=300):
+    start = time.time()
+    while time.time() - start < timeout:
+        res = requests.get(
+            f"https://api.muapi.ai/api/v1/status/{request_id}",
+            headers={"x-api-key": api_key}
+        ).json()
+        if res["status"] == "completed":
+            return res["outputs"][0]
+        elif res["status"] == "failed":
+            raise Exception(res.get("error", "Generation failed"))
+        time.sleep(poll_interval)
+    raise TimeoutError("Generation timed out")
+
+video_url = wait_for_result(request_id, "YOUR_API_KEY")
+print(f"Video: {video_url}")
+```
+
+---
+
+### MuAPI Parameters
 
 | Parameter | Type | Options | Default | Description |
 |---|---|---|---|---|
-| `prompt` | string | — | required | Text description of the video |
-| `image_url` | string | URL | — | Input image for img2vid |
-| `end_image_url` | string | URL | — | Target end frame |
-| `resolution` | string | `480p` `720p` `1080p` | `720p` | Output resolution |
-| `duration` | string/int | `4`–`15` | `10` | Duration in seconds |
+| `prompt` | string | — | required | Text description. Use `@image1`, `@image2` to reference inputs |
+| `images_list` | array | URLs | — | Input images for I2V (up to 9) |
 | `aspect_ratio` | string | `21:9` `16:9` `4:3` `1:1` `3:4` `9:16` | `16:9` | Output aspect ratio |
-| `generate_audio` | bool | `true` `false` | `true` | Generate native audio |
-| `seed` | int | any | random | For reproducible outputs |
+| `duration` | int | `4`–`15` | `10` | Duration in seconds |
+| `quality` | string | `basic` `high` | `basic` | `high` = 1080p priority |
+| `remove_watermark` | bool | `true` `false` | `false` | Remove MuAPI watermark |
+
+> **Playground:** [muapi.ai/playground](https://muapi.ai?utm_source=github&utm_medium=readme&utm_campaign=awesome-seedance-2.5)
 
 ---
 
@@ -413,25 +452,13 @@ clothing, smooth 24fps motion, rhythmic bass-driven audio sync, 9:16 vertical.
 
 ---
 
-## API Providers Comparison
-
-| Provider | Model ID | Strengths |
-|---|---|---|
-| [fal.ai](https://fal.ai) | `fal-ai/seedance-2-5/text-to-video` | Fastest, best uptime, great DX |
-| [Replicate](https://replicate.com) | `bytedance/seedance-2-5:latest` | Familiar workflow, strong community |
-| [Volcano Engine / BytePlus](https://www.byteplus.com) | `seedance-2-5` | Official ByteDance endpoint |
-| [MuAPI](https://muapi.ai) | — | Aggregated access, fallover support |
-
----
-
 ## Resources & Links
 
 - [Seedance Official (ByteDance)](https://seed.bytedance.com/en/seedance2_0)
-- [BytePlus / Volcano Engine Docs](https://docs.byteplus.com/en/docs/ModelArk)
-- [fal.ai Seedance Guide](https://fal.ai/learn/devs/seedance-1-5-prompt-guide)
+- [MuAPI — Seedance 2.5 API Access](https://muapi.ai?utm_source=github&utm_medium=readme&utm_campaign=awesome-seedance-2.5)
 - [Seedance 2.5 Release Notes](https://www.openpr.com/news/4555789/seedance-2-5-released-next-level-multi-shot-ai-video)
-- [Prompt Guide by invideo.io](https://invideo.io/blog/seedance-2-0-prompt-guide/)
-- [API Providers Comparison](https://blog.laozhang.ai/en/posts/seedance-2-api-providers-comparison)
+- [Seedance Prompt Guide by invideo.io](https://invideo.io/blog/seedance-2-0-prompt-guide/)
+- [BytePlus ModelArk Docs](https://docs.byteplus.com/en/docs/ModelArk)
 
 ---
 
