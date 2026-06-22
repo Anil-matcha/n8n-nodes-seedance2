@@ -64,3 +64,13 @@ n8n community node, seedance, seedance 2.0, seedance 2 mini, seedance 2 mini n8n
 ---
 
 **Built with ❤️ for the n8n community.** For support, visit [muapi.ai](https://muapi.ai?utm_source=github&utm_medium=readme&utm_campaign=n8n-nodes-seedance2).
+
+## 🧪 Try in the Muapi Playground
+
+Don't have n8n set up? Test the models directly in the browser:
+
+| Model | Image-to-Video | Text-to-Video |
+|-------|---------------|---------------|
+| Seedance 2.0 Mini *(coming soon)* | [Playground](https://muapi.ai/playground/seedance-2.0-mini-image-to-video?utm_source=github&utm_medium=readme&utm_campaign=n8n-nodes-seedance2) | [Playground](https://muapi.ai/playground/seedance-2.0-mini-text-to-video?utm_source=github&utm_medium=readme&utm_campaign=n8n-nodes-seedance2) |
+| Seedance 2.1 *(coming soon)* | [Playground](https://muapi.ai/playground/seedance-2.1-image-to-video?utm_source=github&utm_medium=readme&utm_campaign=n8n-nodes-seedance2) | [Playground](https://muapi.ai/playground/seedance-2.1-text-to-video?utm_source=github&utm_medium=readme&utm_campaign=n8n-nodes-seedance2) |
+| Seedance 2.5 *(coming soon)* | [Playground](https://muapi.ai/playground/seedance-2.5-image-to-video?utm_source=github&utm_medium=readme&utm_campaign=n8n-nodes-seedance2) | [Playground](https://muapi.ai/playground/seedance-2.5-text-to-video?utm_source=github&utm_medium=readme&utm_campaign=n8n-nodes-seedance2) |
