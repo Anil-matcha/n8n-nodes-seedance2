@@ -14,6 +14,7 @@ Integrate **ByteDance Seedance 2.0** and **Seedance 2 Mini** into your **n8n** w
 - [seedance2.5-comfyui](https://github.com/Anil-matcha/seedance2.5-comfyui) — Native Seedance 2.5 ComfyUI custom nodes and example workflows
 - [awesome-seedance-2.5-api-prompts](https://github.com/Anil-matcha/awesome-seedance-2.5-api-prompts) — Curated Seedance 2.5 API guide, prompts, camera controls, and video generation examples
 - [seedance-2-mcp](https://github.com/Anil-matcha/seedance-2-mcp) — Focused MCP server for calling Seedance 2 from AI assistants
+- [seedance-2.5-mcp](https://github.com/Anil-matcha/seedance-2.5-mcp) — MCP server for generating Seedance 2.5 Preview videos through MuAPI.
 
 ## About
 
